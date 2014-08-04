@@ -1,0 +1,84 @@
+html { height: 100%; }
+body {
+	height: 100%;
+	font-size: 18px;
+	font-family: arial;
+	font-weight: 400;
+	background: #f2f2f2;
+	color: #333;
+}
+
+.container--compare-blocks {
+	position: relative;
+	max-width: 685px;
+	margin: 10px auto;
+}
+.compare-block,
+.container--diff {
+	max-width: 685px;
+	margin: 20px auto;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	background: white;
+	overflow: hidden;
+}
+.compare-block {
+	display: inline-block;
+	max-width: 330px;
+	vertical-align: top;			
+	.compare-block-one {}
+	.compare-block-two {
+		position: absolute;
+		right: 0;
+	}
+	.block {
+		padding: 15px;
+		text-align: left;
+	}		
+}
+.small-title {
+	background: #ecf0f1;
+	color: #2c3e50;
+	font-weight: 700;
+	font-size: 0.9em;
+	padding: 3px 15px;
+}
+.title {
+	padding: 20px;
+	background: #1b2032;
+	color: white;
+}
+.diff {
+	padding: 20px;
+}
+del, ins {
+	padding: 2px;
+	border-radius: 2px;			
+	margin: 1px 4px;
+	display: inline-block;
+	color: white;
+}
+del { 
+	background: #c0392b;
+	border: 1px solid #e74c3c;
+}
+ins {
+	background: #27ae60;  
+	border: 1px solid #2ecc71;  
+	text-decoration: none;
+}
+
+footer {
+	max-width: 400px;
+	margin: 15px auto;
+	text-align: center;
+	a {
+		color: #3498db;
+		font-size: 0.8em;
+		text-decoration: none;
+	}
+	.link-spacer {
+		padding: 0 20px;
+		color: #ddd;
+	}
+}

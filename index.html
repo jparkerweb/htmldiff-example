@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>htmldiff example</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<div class="container--compare-blocks">
+		<div class="compare-block compare-block-one">
+			<header class="small-title">1st HTML Block</header>
+			<!-- element containing our 1st set of html for comparison -->
+			<div class="block" id="block1">
+				<div>Name: justin Parker<br>Link: http://github.com/jparkerweb/htmldiff-example<br>About: html diff poc<br>Description: front-end lib to show differences between html blocks<br>Category: javascript</div>
+			</div>
+		</div>
+
+		<div class="compare-block compare-block-two">
+			<header class="small-title">2nd HTML Block</header>
+			<!-- element containing our 2nd set of html for comparison -->
+			<div class="block" id="block2">
+				<div>Name: Justin Parker<br>Link: http://github.com/jparkerweb/htmldiff-example<br>About: HTML diff example<br>Description: front-end lib to show differences between HTML blocks<br>Category: JavaScript</div>
+			</div>
+		</div>
+	</div>
+
+	<article class="container--diff">
+		<header class="title">
+			HTML Diff Example (diff between Block1 and Block2)
+		</header>
+		<!-- results of our comparison will be inserted here -->
+		<section id="diff" class="diff"></section>	 	
+	</article>
+
+	<footer>
+		<a href="https://github.com/jparkerweb/htmldiff-example" target="blank">this example source</a>
+		<span class="link-spacer">|</span>
+		<a href="https://github.com/tnwinc/htmldiff.js" target="blank">htmldiff module source</a>
+	</footer>
+
+	<script src="js/libs/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
