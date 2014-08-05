@@ -41,6 +41,7 @@ gulp.task('browser-sync', function() {
 });
 // reload
 gulp.task('reload', function () {
+	console.log('browser-sync reload');
 	browserSync.reload();
 });
 
@@ -66,7 +67,7 @@ gulp.task('sass', ['clean-sass'], function () {
 			sassCompleteMessage = sassCompleteMessage + " : MINIFIED";
 		}
 
-		gulp.src(sourcePaths.CSS)
+		return gulp.src(sourcePaths.CSS)
 			.pipe(rubySass()).on('error', notify.onError({message: 'sass error: <%= error %>'}))
 			.pipe(autoprefixer('last 4 versions'))
 			.pipe(gulpif(buildOnly, csso()))
@@ -90,13 +91,14 @@ gulp.task('scripts', ['clean-scripts'], function () {
 	// task: Run Javascript files through Webpack
 	gulp.task('webpack', function() {
 		console.log(sourcePaths.JSBase + '/app.js');
-	    gulp.src([sourcePaths.JSBase + '/app.js'])
+	    return gulp.src([sourcePaths.JSBase + '/app.js'])
 	        .pipe(webpack({
 	        	output: { filename: "index.js" }
 	        }))
 			.pipe(gulpif(buildOnly, uglify()))
 			.pipe(gulp.dest(destPaths.JS))
-
+	});
+	gulp.task('scripts-watch', ['scripts'], function () {
 		gulp.start('reload');
 	});
 
@@ -104,7 +106,7 @@ gulp.task('scripts', ['clean-scripts'], function () {
 // task: watch directories/files for change
 gulp.task('watch', function () {
 	gulp.watch(sourcePaths.CSS, ['sass']);
-	gulp.watch(sourcePaths.JS, ['scripts']);
+	gulp.watch(sourcePaths.JS, ['scripts-watch']);
 	gulp.watch('../*.html', ['reload'])
 });
 
