@@ -9,15 +9,15 @@
     "browser-sync": "^1.3.2",
     "gulp": "^3.8.7",
     "gulp-autoprefixer": "0.0.8",
-    "gulp-clean": "^0.3.1",    
+    "gulp-clean": "^0.3.1",
     "gulp-csso": "^0.2.9",
     "gulp-if": "^1.2.2",
     "gulp-notify": "^1.4.0",
-    "gulp-ruby-sass": "^0.6.0",
+    "gulp-ruby-sass": "^0.7.1",
     "gulp-uglify": "^0.3.1",
-    "gulp-util": "^2.2.20",
+    "gulp-util": "^3.0.0",
     "gulp-watch": "^0.6.8",
-    "yargs": "^1.2.6",
-    "webpack": "^1.3.3-beta1"
+    "gulp-webpack": "^0.2.0",
+    "yargs": "^1.2.6"
   }
 }

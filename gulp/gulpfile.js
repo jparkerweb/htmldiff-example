@@ -39,6 +39,10 @@ gulp.task('browser-sync', function() {
         }
     });
 });
+// reload
+gulp.task('reload', function () {
+	browserSync.reload();
+});
 
 
 // task: SASS
@@ -54,6 +58,7 @@ gulp.task('sass', ['clean-sass'], function () {
 	});
 	// task: compile SASS to CSS and AutoPrefix
 	gulp.task('build-sass', function () {
+		console.log("builidng sass");
 		browserSync.notify("Compiling CSS, please wait...");
 		// set sass complete message
 		var sassCompleteMessage = "SASS Complete";
@@ -61,7 +66,7 @@ gulp.task('sass', ['clean-sass'], function () {
 			sassCompleteMessage = sassCompleteMessage + " : MINIFIED";
 		}
 
-		return gulp.src(sourcePaths.CSS)
+		gulp.src(sourcePaths.CSS)
 			.pipe(rubySass()).on('error', notify.onError({message: 'sass error: <%= error %>'}))
 			.pipe(autoprefixer('last 4 versions'))
 			.pipe(gulpif(buildOnly, csso()))
@@ -92,7 +97,7 @@ gulp.task('scripts', ['clean-scripts'], function () {
 			.pipe(gulpif(buildOnly, uglify()))
 			.pipe(gulp.dest(destPaths.JS))
 
-		return browserSync.reload();		
+		gulp.start('reload');
 	});
 
 
@@ -100,6 +105,7 @@ gulp.task('scripts', ['clean-scripts'], function () {
 gulp.task('watch', function () {
 	gulp.watch(sourcePaths.CSS, ['sass']);
 	gulp.watch(sourcePaths.JS, ['scripts']);
+	gulp.watch('../*.html', ['reload'])
 });
 
 
