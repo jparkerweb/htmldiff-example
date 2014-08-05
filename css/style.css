@@ -27,7 +27,7 @@ body {
   display: inline-block;
   max-width: 330px;
   vertical-align: top; }
-  .compare-block .compare-block-two {
+  .compare-block.compare-block-two {
     position: absolute;
     right: 0; }
   .compare-block .block {
