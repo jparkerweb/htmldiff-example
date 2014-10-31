@@ -68,8 +68,10 @@ gulp.task('sass', ['clean-sass'], function () {
 		}
 
 		return gulp.src(sourcePaths.CSS)
-			.pipe(rubySass()).on('error', notify.onError({message: 'sass error: <%= error %>'}))
-			.pipe(autoprefixer('last 4 versions'))
+			// this hack forces rubysass to not return source maps
+			.pipe(rubySass({ style: 'expanded', 'sourcemap=none': true }))
+				.on('error', notify.onError({message: 'sass error: <%= error %>'}))
+			.pipe(autoprefixer({browsers: ['last 4 versions']}))
 			.pipe(gulpif(buildOnly, csso()))
 			.pipe(gulp.dest(destPaths.CSS))
 			.pipe(notify({onLast: true, message: sassCompleteMessage}))
@@ -111,7 +113,7 @@ gulp.task('watch', function () {
 });
 
 
-// task: default, clean, compile, watch.
+// task: default, clean, compile, watch. (will NOT watch if --build is passed)
 gulp.task('default', ['sass', 'scripts'], function () {
 	if (!buildOnly) gulp.start('watch');
 	if (!buildOnly) gulp.start('browser-sync');
